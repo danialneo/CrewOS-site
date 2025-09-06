@@ -1,19 +1,108 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"/>
-<title>CrewOS</title>
+<title>CrewOS – Production Management App</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="CrewOS compliance and support resources." />
-<style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:40px;max-width:840px;line-height:1.55}a{color:#2563eb;text-decoration:none}a:hover{text-decoration:underline}h1{margin-top:0}small{opacity:.7}</style>
+<meta name="description" content="CrewOS app – jobs, call sheets, invoices & collaboration. Legal, support, and helpful resources." />
+<meta property="og:title" content="CrewOS – Production Management App" />
+<meta property="og:description" content="Organize jobs, call sheets, invoices and collaborators with CrewOS." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://danialneo.github.io/CrewOS-site/" />
+<meta property="og:image" content="https://danialneo.github.io/CrewOS-site/assets/cover.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CrewOS – Production Management App" />
+<meta name="twitter:description" content="Jobs, call sheets, invoices & collaboration in one place." />
+<meta name="twitter:image" content="https://danialneo.github.io/CrewOS-site/assets/cover.png" />
+<link rel="icon" href="favicon.ico" />
+<style>
+  :root{color-scheme:light dark}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:40px;max-width:960px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1{margin-top:0;font-size:2.2rem}
+  a{color:#2563eb;text-decoration:none}
+  a:hover{text-decoration:underline}
+  header{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.75rem}
+  nav a{padding:.45rem .75rem;border-radius:6px;background:#eef5ff;color:#1e3a8a;font-weight:500;font-size:.9rem}
+  @media (prefers-color-scheme: dark){nav a{background:#1e293b;color:#bfdbfe}}
+  nav a:hover{background:#dbeafe}
+  @media (prefers-color-scheme: dark){nav a:hover{background:#334155}}
+  section{margin-top:2.5rem}
+  .grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  figure{margin:0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+  figure img{width:100%;display:block;aspect-ratio:9/19;object-fit:cover;background:#f1f5f9}
+  figure figcaption{padding:.6rem .8rem;font-size:.75rem;font-weight:500;letter-spacing:.3px;text-transform:uppercase;opacity:.75}
+  footer{margin-top:3rem;font-size:.8rem;opacity:.7}
+  .hero p{max-width:640px}
+  .badge{display:inline-block;padding:.25rem .55rem;font-size:.65rem;font-weight:600;letter-spacing:.5px;background:#e0f2fe;color:#0369a1;border-radius:4px;margin-right:.5rem}
+  @media (prefers-color-scheme: dark){body{background:#0f172a;color:#f1f5f9}figure{background:#1e293b;border-color:#334155}nav a{background:#1e293b;color:#93c5fd}nav a:hover{background:#334155} .badge{background:#1e3a8a;color:#93c5fd}}
+  .screenshots-note{font-size:.75rem;opacity:.6;margin-top:.25rem}
+  .cta-buttons a.button{background:#2563eb;color:#fff;padding:.65rem 1rem;border-radius:6px;font-size:.85rem;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,.05);display:inline-flex;align-items:center;gap:.4rem}
+  .cta-buttons a.button:hover{background:#1d4ed8}
+  @media (prefers-color-scheme: dark){.cta-buttons a.button{background:#1d4ed8}.cta-buttons a.button:hover{background:#1e40af}}
+  .cta-buttons{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.25rem}
+</style>
 </head><body>
-<h1>CrewOS</h1>
-<p>Legal, compliance and support resources.</p>
-<ul>
-  <li><a href="privacy-policy.html">Privacy Policy</a></li>
-  <li><a href="terms-of-service.html">Terms of Service</a></li>
-  <li><a href="support.html">Support</a></li>
-  <li><a href="account-deletion.html">Account Deletion</a></li>
-</ul>
-<p>&copy; <span id="y"></span> CrewOS.</p>
-<small>Contact: <a href="mailto:support@crewos.app">support@crewos.app</a></small>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<header>
+  <div>
+    <h1>CrewOS</h1>
+    <div class="badge">PRODUCTION MANAGEMENT</div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="terms-of-service.html">Terms</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="account-deletion.html">Deletion</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <p>Organize jobs, generate invoices, manage call sheets and collaborate with your crew in one streamlined mobile experience. Secure biometric unlock, attachment handling, and subscription-based pro features included.</p>
+  <div class="cta-buttons">
+    <a class="button" href="https://apps.apple.com" rel="noopener" target="_blank">App Store (soon)</a>
+    <a class="button" href="support.html">Get Support</a>
+  </div>
+</section>
+
+<section id="screenshots">
+  <h2 style="font-size:1.4rem;margin-top:0">App Screens (Preview)</h2>
+  <div class="grid">
+    <figure>
+      <img src="assets/login.png" alt="Login screen" loading="lazy" />
+      <figcaption>Secure Login & Face ID</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/jobs.png" alt="Jobs list" loading="lazy" />
+      <figcaption>Jobs Overview</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/collaboration.png" alt="Collaboration view" loading="lazy" />
+      <figcaption>Collaboration</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/invoice.png" alt="Invoice builder" loading="lazy" />
+      <figcaption>Invoice Builder</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/pdf-viewer.png" alt="PDF viewer" loading="lazy" />
+      <figcaption>PDF Preview</figcaption>
+    </figure>
+  </div>
+  <div class="screenshots-note">Images are illustrative; final UI may evolve.</div>
+</section>
+
+<section id="links">
+  <h2 style="font-size:1.2rem">Compliance & Legal</h2>
+  <ul>
+    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    <li><a href="terms-of-service.html">Terms of Service</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="account-deletion.html">Account Deletion</a></li>
+  </ul>
+</section>
+
+<footer>
+  &copy; <span id="y"></span> CrewOS • <a href="mailto:support@crewos.app">support@crewos.app</a>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body></html>
