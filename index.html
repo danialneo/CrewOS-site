@@ -2,107 +2,211 @@
 <meta charset="utf-8"/>
 <title>CrewOS – Production Management App</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="CrewOS app – jobs, call sheets, invoices & collaboration. Legal, support, and helpful resources." />
+<meta name="description" content="CrewOS helps film & media teams manage jobs, call sheets, invoices, attachments and collaboration – fast, secure, organized." />
 <meta property="og:title" content="CrewOS – Production Management App" />
-<meta property="og:description" content="Organize jobs, call sheets, invoices and collaborators with CrewOS." />
+<meta property="og:description" content="Jobs • Call Sheets • Invoices • Collaboration • Face ID" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://danialneo.github.io/CrewOS-site/" />
 <meta property="og:image" content="https://danialneo.github.io/CrewOS-site/assets/cover.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="CrewOS – Production Management App" />
-<meta name="twitter:description" content="Jobs, call sheets, invoices & collaboration in one place." />
+<meta name="twitter:description" content="Streamline production admin & paperwork." />
 <meta name="twitter:image" content="https://danialneo.github.io/CrewOS-site/assets/cover.png" />
 <link rel="icon" href="favicon.ico" />
 <style>
-  :root{color-scheme:light dark}
-  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;margin:40px;max-width:960px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  h1{margin-top:0;font-size:2.2rem}
-  a{color:#2563eb;text-decoration:none}
-  a:hover{text-decoration:underline}
-  header{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
-  nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.75rem}
-  nav a{padding:.45rem .75rem;border-radius:6px;background:#eef5ff;color:#1e3a8a;font-weight:500;font-size:.9rem}
-  @media (prefers-color-scheme: dark){nav a{background:#1e293b;color:#bfdbfe}}
-  nav a:hover{background:#dbeafe}
-  @media (prefers-color-scheme: dark){nav a:hover{background:#334155}}
-  section{margin-top:2.5rem}
-  .grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-  figure{margin:0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
-  figure img{width:100%;display:block;aspect-ratio:9/19;object-fit:cover;background:#f1f5f9}
-  figure figcaption{padding:.6rem .8rem;font-size:.75rem;font-weight:500;letter-spacing:.3px;text-transform:uppercase;opacity:.75}
-  footer{margin-top:3rem;font-size:.8rem;opacity:.7}
-  .hero p{max-width:640px}
-  .badge{display:inline-block;padding:.25rem .55rem;font-size:.65rem;font-weight:600;letter-spacing:.5px;background:#e0f2fe;color:#0369a1;border-radius:4px;margin-right:.5rem}
-  @media (prefers-color-scheme: dark){body{background:#0f172a;color:#f1f5f9}figure{background:#1e293b;border-color:#334155}nav a{background:#1e293b;color:#93c5fd}nav a:hover{background:#334155} .badge{background:#1e3a8a;color:#93c5fd}}
-  .screenshots-note{font-size:.75rem;opacity:.6;margin-top:.25rem}
-  .cta-buttons a.button{background:#2563eb;color:#fff;padding:.65rem 1rem;border-radius:6px;font-size:.85rem;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,.05);display:inline-flex;align-items:center;gap:.4rem}
-  .cta-buttons a.button:hover{background:#1d4ed8}
-  @media (prefers-color-scheme: dark){.cta-buttons a.button{background:#1d4ed8}.cta-buttons a.button:hover{background:#1e40af}}
-  .cta-buttons{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.25rem}
+  :root{--bg:#ffffff;--text:#0f172a;--sub:#334155;--brand:#2563eb;--brand-accent:#1d4ed8;--surface:#f1f5f9;--border:#e2e8f0;--radius:18px;color-scheme:light dark}
+  @media (prefers-color-scheme: dark){:root{--bg:#0f172a;--text:#f1f5f9;--sub:#94a3b8;--surface:#11203b;--border:#1e293b;--brand:#3b82f6;--brand-accent:#1d4ed8}}
+  *{box-sizing:border-box}html,body{padding:0;margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none;transition:.18s}
+  a:hover{color:var(--brand-accent)}
+  header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(150%) blur(12px);background:linear-gradient(90deg,rgba(255,255,255,.82),rgba(255,255,255,.72));display:flex;align-items:center;justify-content:space-between;padding:14px 40px;border-bottom:1px solid var(--border)}
+  @media (prefers-color-scheme: dark){header{background:linear-gradient(90deg,rgba(15,23,42,.84),rgba(15,23,42,.7))}}
+  .brand{font-size:1.15rem;font-weight:600;letter-spacing:.5px;display:flex;align-items:center;gap:.6rem}
+  nav ul{margin:0;padding:0;list-style:none;display:flex;gap:1.2rem;font-size:.85rem;font-weight:500}
+  nav a{position:relative;padding:.35rem .2rem}
+  nav a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--brand);transition:.25s}
+  nav a:hover:after{width:100%}
+  .hero{padding:110px 40px 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:60px;align-items:center;background:radial-gradient(circle at 20% 20%,#eff6ff,transparent 70%),linear-gradient(180deg,#ffffff, #f8fbff);position:relative;overflow:hidden}
+  @media (prefers-color-scheme: dark){.hero{background:radial-gradient(circle at 20% 20%,rgba(59,130,246,.25),transparent 70%),linear-gradient(180deg,#0f172a,#0b1322)}}
+  .hero-copy h1{margin:0 0 18px;font-size:clamp(2.1rem,5vw,3rem);line-height:1.05;letter-spacing:-.5px}
+  .gradient-text{background:linear-gradient(90deg,#2563eb,#4f46e5 40%,#9333ea);-webkit-background-clip:text;color:transparent}
+  .hero-copy p{margin:0 0 26px;font-size:1.05rem;max-width:620px;line-height:1.5;color:var(--sub)}
+  .cta{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{--btn-bg:var(--brand);--btn-bg-h:var(--brand-accent);--btn-color:#fff;display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.85rem;padding:.85rem 1.15rem;border-radius:10px;background:var(--btn-bg);color:var(--btn-color);box-shadow:0 4px 14px -4px rgba(37,99,235,.45);transition:.25s;border:1px solid rgba(255,255,255,.15)}
+  .btn:hover{background:var(--btn-bg-h);transform:translateY(-2px)}
+  .btn.outline{--btn-bg:var(--surface);--btn-color:var(--text);box-shadow:none;border:1px solid var(--border)}.btn.outline:hover{background:#fff}
+  @media (prefers-color-scheme: dark){.btn.outline{--btn-bg:#1e293b;border-color:#334155}.btn.outline:hover{background:#253349}}
+  .device-stack{position:relative;display:flex;justify-content:center;align-items:center;height:520px}
+  .mock-phone{width:250px;aspect-ratio:9/19;background:#000;border:14px solid #0d1117;border-radius:40px;box-shadow:0 10px 40px -8px rgba(0,0,0,.35),0 2px 6px rgba(0,0,0,.2);position:absolute;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .mock-phone:before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#0d1117;border-bottom-left-radius:14px;border-bottom-right-radius:14px}
+  .mock-phone img{width:100%;height:100%;object-fit:cover}
+  .mock-phone.two{transform:translate(180px,40px) rotate(12deg);z-index:2}
+  .mock-phone.one{transform:translate(-140px,-30px) rotate(-10deg);z-index:1}
+  .section{padding:80px 40px;max-width:1280px;margin:0 auto}
+  .center{text-align:center}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px;margin-top:50px}
+  .feature-card{background:linear-gradient(145deg,#ffffff,#f4f8ff);border:1px solid var(--border);padding:22px 20px 24px;border-radius:20px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px}
+  .feature-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(37,99,235,.15),transparent 60%);pointer-events:none}
+  .feature-icon{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#4f46e5);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:600;box-shadow:0 4px 12px -4px rgba(37,99,235,.5)}
+  .feature-card h3{margin:4px 0 0;font-size:1rem;letter-spacing:.3px}
+  .feature-card p{margin:0;font-size:.8rem;line-height:1.45;color:var(--sub)}
+  @media (prefers-color-scheme: dark){.feature-card{background:linear-gradient(145deg,#162133,#101a2a);border-color:#1e293b}.feature-card:before{background:radial-gradient(circle at 80% 0%,rgba(59,130,246,.25),transparent 65%)}}
+  .mini-heading{font-size:.75rem;font-weight:600;letter-spacing:2px;color:var(--brand);text-transform:uppercase;margin-bottom:10px}
+  @media (prefers-color-scheme: dark){.mini-heading{color:#60a5fa}}
+  .value-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:46px;margin-top:40px}
+  .value-item h3{margin:0 0 10px;font-size:1.05rem}
+  .value-item p{margin:0;font-size:.9rem;line-height:1.55;color:var(--sub)}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:90px 0 40px}
+  .faq{max-width:880px;margin:0 auto;text-align:left}
+  .faq details{background:var(--surface);border:1px solid var(--border);padding:16px 18px;border-radius:14px;margin-bottom:14px}
+  .faq details[open]{background:linear-gradient(135deg,#ffffff,#f2f7ff)}
+  @media (prefers-color-scheme: dark){.faq details{background:#152133;border-color:#1e293b}.faq details[open]{background:#1a2942}}
+  .faq summary{cursor:pointer;font-weight:600;outline:none}
+  footer{background:linear-gradient(180deg,#ffffff,#f7faff);padding:70px 40px 40px;margin-top:40px;border-top:1px solid var(--border)}
+  @media (prefers-color-scheme: dark){footer{background:linear-gradient(180deg,#0f172a,#0d1524)}}
+  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px;max-width:1180px;margin:0 auto 40px}
+  .footer-grid h4{margin:0 0 14px;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase}
+  .footer-grid a{display:block;font-size:.75rem;margin-bottom:8px;color:var(--sub)}
+  .legal{font-size:.7rem;text-align:center;opacity:.65}
+  .pill{display:inline-block;padding:.25rem .55rem;font-size:.6rem;font-weight:600;letter-spacing:1px;background:linear-gradient(90deg,#2563eb,#4f46e5);color:#fff;border-radius:30px}
+  .animate-fade{animation:fade .9s ease .1s both}
+  @keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @media (max-width:900px){.hero{grid-template-columns:1fr;padding:90px 28px 70px}.device-stack{height:420px}.mock-phone{width:200px}.section{padding:70px 30px}}
 </style>
 </head><body>
 <header>
-  <div>
-    <h1>CrewOS</h1>
-    <div class="badge">PRODUCTION MANAGEMENT</div>
-  </div>
+  <div class="brand">CrewOS <span class="pill">BETA</span></div>
   <nav>
     <ul>
-      <li><a href="privacy-policy.html">Privacy</a></li>
-      <li><a href="terms-of-service.html">Terms</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#value">Why</a></li>
+      <li><a href="#screens">Screens</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="support.html">Support</a></li>
-      <li><a href="account-deletion.html">Deletion</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
     </ul>
   </nav>
 </header>
 
 <section class="hero">
-  <p>Organize jobs, generate invoices, manage call sheets and collaborate with your crew in one streamlined mobile experience. Secure biometric unlock, attachment handling, and subscription-based pro features included.</p>
-  <div class="cta-buttons">
-    <a class="button" href="https://apps.apple.com" rel="noopener" target="_blank">App Store (soon)</a>
-    <a class="button" href="support.html">Get Support</a>
+  <div class="hero-copy animate-fade">
+    <h1><span class="gradient-text">Production made simple.</span><br/>All your jobs, call sheets & invoices—unified.</h1>
+    <p>Stop juggling spreadsheets, PDFs and scattered chats. CrewOS lets you create jobs, attach media, manage collaborators, generate invoices to PDF, and unlock instantly with Face ID. Built for lean crews that still demand pro structure.</p>
+    <div class="cta">
+      <a class="btn" href="https://apps.apple.com" target="_blank" rel="noopener">App Store (soon)</a>
+      <a class="btn outline" href="#features">Explore Features</a>
+    </div>
+  </div>
+  <div class="device-stack">
+    <div class="mock-phone one"><img src="assets/jobs.png" alt="Jobs screen"></div>
+    <div class="mock-phone two"><img src="assets/invoice.png" alt="Invoice builder"></div>
   </div>
 </section>
 
-<section id="screenshots">
-  <h2 style="font-size:1.4rem;margin-top:0">App Screens (Preview)</h2>
-  <div class="grid">
-    <figure>
-      <img src="assets/login.png" alt="Login screen" loading="lazy" />
-      <figcaption>Secure Login & Face ID</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/jobs.png" alt="Jobs list" loading="lazy" />
-      <figcaption>Jobs Overview</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/collaboration.png" alt="Collaboration view" loading="lazy" />
-      <figcaption>Collaboration</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/invoice.png" alt="Invoice builder" loading="lazy" />
-      <figcaption>Invoice Builder</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/pdf-viewer.png" alt="PDF viewer" loading="lazy" />
-      <figcaption>PDF Preview</figcaption>
-    </figure>
+<section id="features" class="section center">
+  <div class="mini-heading">FEATURES</div>
+  <h2 style="margin:0;font-size:2rem">Tools that actually reduce friction</h2>
+  <p style="max-width:760px;margin:16px auto 0;color:var(--sub);font-size:.95rem">Everything essential to prep, track and wrap small to mid‑sized productions—without the enterprise bloat.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">J</div>
+      <h3>Job Management</h3>
+      <p>Create jobs, attach briefs & media, and keep context centralized.
+      </p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">C</div>
+      <h3>Call Sheets</h3>
+      <p>Prep and distribute call info fast. Avoid outdated versions and email chains.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">I</div>
+      <h3>Invoice PDFs</h3>
+      <p>Generate clean PDFs on‑device. Export or share instantly.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">F</div>
+      <h3>Face ID Unlock</h3>
+      <p>Secure biometric gate with grace period for smooth context switching.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">A</div>
+      <h3>Attachments</h3>
+      <p>Image crop, PDF viewing, and inline references—all tied to your jobs.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">S</div>
+      <h3>Subscriptions</h3>
+      <p>Entitlement‑based upgrades managed cleanly through RevenueCat.</p>
+    </div>
   </div>
-  <div class="screenshots-note">Images are illustrative; final UI may evolve.</div>
 </section>
 
-<section id="links">
-  <h2 style="font-size:1.2rem">Compliance & Legal</h2>
-  <ul>
-    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-    <li><a href="terms-of-service.html">Terms of Service</a></li>
-    <li><a href="support.html">Support</a></li>
-    <li><a href="account-deletion.html">Account Deletion</a></li>
-  </ul>
+<section id="value" class="section">
+  <div class="mini-heading center">WHY CREWOS</div>
+  <h2 class="center" style="margin:0 0 10px;font-size:2rem">Less overhead. More clarity.</h2>
+  <div class="value-grid">
+    <div class="value-item"><h3>Unified data</h3><p>Stop hunting through messages. Jobs, collaborators, files & invoices live in one focused workflow.</p></div>
+    <div class="value-item"><h3>Fast iteration</h3><p>Native performance via Expo & modern RN architecture means quick interactions even on older devices.</p></div>
+    <div class="value-item"><h3>Privacy‑minded</h3><p>Biometric gate + least‑privilege Firebase rules + no ad tracking = your data stays yours.</p></div>
+    <div class="value-item"><h3>Ready to scale</h3><p>Entitlements & role‑aware access lay groundwork for larger team controls and analytics.</p></div>
+  </div>
+</section>
+
+<div class="divider" id="screens"></div>
+<section class="section center">
+  <div class="mini-heading">APP SCREENS</div>
+  <h2 style="margin:0;font-size:2rem">A quick look</h2>
+  <p style="max-width:700px;margin:14px auto 40px;color:var(--sub);font-size:.95rem">Representative UI (subject to refinement). Swap in your real screenshots in <code>assets/</code>.</p>
+  <div class="features-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:26px">
+    <div class="feature-card" style="padding:10px 10px 16px"><img src="assets/login.png" alt="Login" style="width:100%;border-radius:12px;aspect-ratio:9/19;object-fit:cover;background:#0f172a" /><p style="font-size:.7rem;margin:10px 0 0;text-align:center;opacity:.7">Login</p></div>
+    <div class="feature-card" style="padding:10px 10px 16px"><img src="assets/jobs.png" alt="Jobs" style="width:100%;border-radius:12px;aspect-ratio:9/19;object-fit:cover;background:#0f172a" /><p style="font-size:.7rem;margin:10px 0 0;text-align:center;opacity:.7">Jobs</p></div>
+    <div class="feature-card" style="padding:10px 10px 16px"><img src="assets/collaboration.png" alt="Collaboration" style="width:100%;border-radius:12px;aspect-ratio:9/19;object-fit:cover;background:#0f172a" /><p style="font-size:.7rem;margin:10px 0 0;text-align:center;opacity:.7">Collaboration</p></div>
+    <div class="feature-card" style="padding:10px 10px 16px"><img src="assets/invoice.png" alt="Invoice" style="width:100%;border-radius:12px;aspect-ratio:9/19;object-fit:cover;background:#0f172a" /><p style="font-size:.7rem;margin:10px 0 0;text-align:center;opacity:.7">Invoice</p></div>
+    <div class="feature-card" style="padding:10px 10px 16px"><img src="assets/pdf-viewer.png" alt="PDF" style="width:100%;border-radius:12px;aspect-ratio:9/19;object-fit:cover;background:#0f172a" /><p style="font-size:.7rem;margin:10px 0 0;text-align:center;opacity:.7">PDF Viewer</p></div>
+  </div>
+  <div style="font-size:.65rem;opacity:.55;margin-top:14px">UI images are illustrative placeholders.</div>
+</section>
+
+<div class="divider" id="faq"></div>
+<section class="section center">
+  <div class="mini-heading">FAQ</div>
+  <h2 style="margin:0 0 8px;font-size:2rem">Questions</h2>
+  <div class="faq">
+    <details><summary>When will the app be live on the App Store?</summary><p style="margin:12px 0 0;font-size:.85rem;line-height:1.5">Submission in progress; target public availability soon after approval.</p></details>
+    <details><summary>Will there be Android support?</summary><p style="margin:12px 0 0;font-size:.85rem;line-height:1.5">Android build is planned; underlying tech already cross‑platform.</p></details>
+    <details><summary>How is my data secured?</summary><p style="margin:12px 0 0;font-size:.85rem;line-height:1.5">Firebase Auth + restrictive Firestore rules + local secure credential storage + optional biometric lock.</p></details>
+    <details><summary>Can I export invoices?</summary><p style="margin:12px 0 0;font-size:.85rem;line-height:1.5">Yes—PDF generation & sharing is built in.</p></details>
+    <details><summary>Do collaborators need a paid plan?</summary><p style="margin:12px 0 0;font-size:.85rem;line-height:1.5">Core collaboration will function for invited users; certain pro features may require an entitlement later.</p></details>
+  </div>
 </section>
 
 <footer>
-  &copy; <span id="y"></span> CrewOS • <a href="mailto:support@crewos.app">support@crewos.app</a>
+  <div class="footer-grid">
+    <div>
+      <h4>Product</h4>
+      <a href="#features">Features</a>
+      <a href="#screens">Screens</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="support.html">Support</a>
+      <a href="mailto:support@crewos.app">Contact</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="account-deletion.html">Account Deletion</a>
+    </div>
+    <div>
+      <h4>Status</h4>
+      <a href="#">iOS: In Review</a>
+      <a href="#">Android: Planned</a>
+    </div>
+  </div>
+  <div class="legal">&copy; <span id="y"></span> CrewOS • All rights reserved • <a href="mailto:support@crewos.app">support@crewos.app</a></div>
 </footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body></html>
