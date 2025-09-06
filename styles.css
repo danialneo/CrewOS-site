@@ -23,6 +23,13 @@
 }
 * { box-sizing:border-box; }
 html,body { padding:0; margin:0; font-family:var(--font-sans); background:var(--c-bg); color:var(--c-text); -webkit-font-smoothing:antialiased; }
+body.doc-page { background:linear-gradient(140deg,#101a2e 0%,#0d2541 55%,#0f172a 100%); }
+@media (prefers-color-scheme: light){ body.doc-page { background:linear-gradient(160deg,#eef3f9 0%,#e5edf6 40%,#dbe7f3 70%); }}
+/* Document card wrapper for legal/support pages */
+.doc-card { background:var(--c-surface); border:1px solid var(--c-border); border-radius:34px; padding:70px 70px 60px; box-shadow:var(--shadow); position:relative; overflow:hidden; }
+@media (max-width:900px){ .doc-card { padding:56px 28px 54px; border-radius:28px; } }
+body.doc-page .site-header { background:rgba(12,19,35,.82); }
+@media (prefers-color-scheme: light){ body.doc-page .site-header { background:rgba(255,255,255,.85); }}
 ::selection { background:rgba(99,102,241,.35); }
 a { color:var(--c-brand); text-decoration:none; transition:color .25s var(--ease); }
 a:hover { color:var(--c-accent); }
